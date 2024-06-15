@@ -4,28 +4,10 @@ const bcrypt = require('bcryptjs');
 const { MongoClient, ObjectId, ServerApiVersion } = require('mongodb');
 const cors = require('cors');
 const NodeGeocoder = require('node-geocoder');
-const allowedOrigins = ['https://one-shop-burnerace.vercel.app'];
 
-// CORS configuration
-const corsOptions = {
-  origin: function (origin, callback) {
-    // Allow requests with no origin, like mobile apps or curl requests
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.indexOf(origin) === -1) {
-      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
-      return callback(new Error(msg), false);
-    }
-    return callback(null, true);
-  },
-  credentials: true, // This is required to enable `Access-Control-Allow-Credentials`
-  methods: 'GET,POST,PUT,DELETE,OPTIONS', // Allowed methods
-  allowedHeaders: 'Content-Type,Authorization' // Allowed headers
-};
 const app = express();
-app.use(cors(corsOptions));
+app.use(cors());
 
-// Handle preflight requests for all routes
-app.options('*', cors(corsOptions));
 const options = {
     provider: 'openstreetmap',
     fetch: (url) => fetch(url)
