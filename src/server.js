@@ -1,4 +1,6 @@
-const app = require('../api/index');
+// const app = require('../api/index');
+const express = require('express');
+const app = express();
 const cors = require('cors');
 const corsOptions = {
     origin: 'https://one-shop-burnerace.vercel.app',
