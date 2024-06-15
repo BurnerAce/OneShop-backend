@@ -11,7 +11,7 @@ const corsOptions = {
 
 const app = express();
 app.use(cors(corsOptions));
-
+app.use(express.json());
 const options = {
     provider: 'openstreetmap',
     fetch: (url) => fetch(url)
