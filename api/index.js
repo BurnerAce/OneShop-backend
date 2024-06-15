@@ -26,7 +26,7 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     next();
 });
-app.use(cors(corsOptions));
+app.use(cors({origin : '*'}));
 const PORT = process.env.PORT || 5000;
 
 const url = 'mongodb+srv://Hanzala:%2310022004%23@cluster0.n1itws1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"';
