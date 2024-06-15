@@ -5,7 +5,7 @@ const { MongoClient, ObjectId, ServerApiVersion } = require('mongodb');
 const cors = require('cors');
 const NodeGeocoder = require('node-geocoder');
 const corsOptions = {
-    origin: 'https://one-shop-burnerace.vercel.app',
+    origin: 'https://one-shop-burnerace.vercel.app/csignup',
     methods: 'GET,POST,PUT,DELETE,OPTIONS',
     credentials: 'true'
 };
@@ -24,7 +24,7 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     next();
 });
-app.use(cors());
+app.use(cors(corsOptions));
 const PORT = process.env.PORT || 5000;
 
 const url = 'mongodb+srv://Hanzala:%2310022004%23@cluster0.n1itws1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"';
