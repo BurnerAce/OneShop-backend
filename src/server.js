@@ -6,6 +6,9 @@ const corsOptions = {
 };
 console.log("Reached");
 app.use(cors(corsOptions));
+app.get('/', (req, res) => {
+    res.send('Hello World! server.js');
+});
 
 const PORT = process.env.PORT || 5000;
 
