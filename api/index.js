@@ -4,17 +4,17 @@ const bcrypt = require('bcryptjs');
 const { MongoClient, ObjectId, ServerApiVersion } = require('mongodb');
 const cors = require('cors');
 const NodeGeocoder = require('node-geocoder');
+const corsOptions = {
+    origin: 'https://one-shop-burnerace.vercel.app',
+    methods: 'GET,POST,PUT,DELETE,OPTIONS',
+    allowedHeaders: 'Content-Type,Authorization'
+  };
 
 const options = {
     provider: 'openstreetmap',
     fetch: (url) => fetch(url)
 };
 
-const corsOptions = {
-    origin: 'https://one-shop-burnerace.vercel.app',
-    methods: 'GET,POST,PUT,DELETE,OPTIONS',
-    allowedHeaders: 'Content-Type,Authorization'
-  };
 
 const geocoder = NodeGeocoder(options);
 const app = express();
