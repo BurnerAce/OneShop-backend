@@ -120,6 +120,8 @@ app.get('/osignup', (req, res) => {
     res.send('Hello World!');
 });
 app.post('/osignup', async (req, res) => {
+    console.log("Atleast it reached");
+    console.log(req.body);
     const { name, phone, shop, email, password, collect, back_img, location } = req.body;
 
     try {
