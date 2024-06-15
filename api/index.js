@@ -4,13 +4,26 @@ const bcrypt = require('bcryptjs');
 const { MongoClient, ObjectId, ServerApiVersion } = require('mongodb');
 const cors = require('cors');
 const NodeGeocoder = require('node-geocoder');
-const corsOptions = {
-    origin: 'https://one-shop-burnerace.vercel.app',
-    credentials: true
-};
 
 const app = express();
+
+
+const corsOptions = {
+    origin: 'https://one-shop-burnerace.vercel.app',
+    credentials: true,
+    optionsSuccessStatus: 200,
+};
+
 app.use(cors(corsOptions));
+
+// CORS headers for all routes
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://one-shop-burnerace.vercel.app');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+    next();
+});
 app.use(express.json());
 const options = {
     provider: 'openstreetmap',
@@ -19,13 +32,6 @@ const options = {
 
 
 const geocoder = NodeGeocoder(options);
-
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'https://one-shop-burnerace.vercel.app');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    next();
-});
 const PORT = process.env.PORT || 5000;
 
 const url = 'mongodb+srv://Hanzala:%2310022004%23@cluster0.n1itws1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"';
@@ -63,9 +69,6 @@ app.get('/signup', (req, res) => {
 });
 app.post('/signup', async (req, res) => {
     console.log("Done");
-    res.header("Access-Control-Allow-Origin", "https://one-shop-burnerace.vercel.app");
-    res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
-    res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
     const { name, phone, email, password, location } = req.body;
     try {
         console.log(location);
