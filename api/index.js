@@ -21,7 +21,7 @@ const corsOptions = {
   methods: 'GET,POST,PUT,DELETE,OPTIONS', // Allowed methods
   allowedHeaders: 'Content-Type,Authorization' // Allowed headers
 };
-
+const app = express();
 app.use(cors(corsOptions));
 
 // Handle preflight requests for all routes
@@ -33,25 +33,13 @@ const options = {
 
 
 const geocoder = NodeGeocoder(options);
-const app = express();
+
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', 'https://one-shop-burnerace.vercel.app');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     next();
 });
-// app.use(cors({
-//     origin: function (origin, callback) {
-//       // Allow requests with no origin like mobile apps or curl requests
-//       if (!origin) return callback(null, true);
-//       if (allowedOrigins.indexOf(origin) === -1) {
-//         const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
-//         return callback(new Error(msg), false);
-//       }
-//       return callback(null, true);
-//     },
-//     credentials: true // Access-Control-Allow-Credentials: true
-//   }));
 const PORT = process.env.PORT || 5000;
 
 const url = 'mongodb+srv://Hanzala:%2310022004%23@cluster0.n1itws1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"';
