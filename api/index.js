@@ -117,6 +117,7 @@ app.post('/login', async (req, res) => {
 });
 
 app.get('/osignup', (req, res) => {
+    res.send('Hello World!');
 });
 app.post('/osignup', async (req, res) => {
     const { name, phone, shop, email, password, collect, back_img, location } = req.body;
