@@ -18,6 +18,12 @@ const options = {
 
 const geocoder = NodeGeocoder(options);
 const app = express();
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://one-shop-burnerace.vercel.app');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    next();
+  });
 app.use(cors(corsOptions));
 const PORT = process.env.PORT || 5000;
 
