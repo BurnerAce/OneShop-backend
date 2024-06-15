@@ -8,7 +8,7 @@ const corsOptions = {
     origin: 'https://one-shop-burnerace.vercel.app',
     methods: 'GET,POST,PUT,DELETE,OPTIONS',
     credentials: 'true'
-  };
+};
 
 const options = {
     provider: 'openstreetmap',
@@ -23,7 +23,7 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     next();
-  });
+});
 app.use(cors(corsOptions));
 const PORT = process.env.PORT || 5000;
 
@@ -39,11 +39,11 @@ app.use(bodyParser.json());
 
 const client = new MongoClient(url, {
     serverApi: {
-      version: ServerApiVersion.v1,
-      strict: true,
-      deprecationErrors: true,
+        version: ServerApiVersion.v1,
+        strict: true,
+        deprecationErrors: true,
     }
-  });
+});
 
 client.connect()
     .then(() => {
@@ -61,6 +61,9 @@ app.get('/signup', (req, res) => {
     res.send('Hello World!');
 });
 app.post('/signup', async (req, res) => {
+    res.header("Access-Control-Allow-Origin", "https://one-shop-burnerace.vercel.app");
+    res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
+    res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
     const { name, phone, email, password, location } = req.body;
     try {
         console.log(location);
@@ -126,7 +129,7 @@ app.get('/osignup', (req, res) => {
     res.send('Hello World!');
 });
 app.post('/osignup', async (req, res) => {
-    
+
     try {
         res.header("Access-Control-Allow-Origin", "https://one-shop-burnerace.vercel.app");
         res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
@@ -436,5 +439,5 @@ app.put('/updateOr', async (req, res) => {
         // await client.close();
     }
 });
-module.exports=app;
+module.exports = app;
 
