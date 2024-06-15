@@ -120,12 +120,12 @@ app.get('/osignup', (req, res) => {
     res.send('Hello World!');
 });
 app.post('/osignup', async (req, res) => {
-    res.header("Access-Control-Allow-Origin", "https://one-shop-burnerace.vercel.app");
-    console.log("Atleast it reached");
-    console.log(req.body);
-    const { name, phone, shop, email, password, collect, back_img, location } = req.body;
-
+    
     try {
+        res.header("Access-Control-Allow-Origin", "https://one-shop-burnerace.vercel.app");
+        console.log("Atleast it reached");
+        console.log(req.body);
+        const { name, phone, shop, email, password, collect, back_img, location } = req.body;
         const geoResponse = await geocoder.geocode(location);
         const { latitude, longitude } = geoResponse[0];
         await client.connect();
