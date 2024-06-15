@@ -4,7 +4,7 @@ const corsOptions = {
     origin: 'https://one-shop-burnerace.vercel.app',
     credentials: true
 };
-
+console.log("Reached");
 app.use(cors(corsOptions));
 
 const PORT = process.env.PORT || 5000;
