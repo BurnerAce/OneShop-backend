@@ -8,6 +8,7 @@ const corsOptions = {
     origin: 'https://one-shop-burnerace.vercel.app',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
+    optionsSuccessStatus: 200,
     credentials: true 
   };
 
