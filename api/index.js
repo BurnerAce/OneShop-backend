@@ -52,6 +52,7 @@ app.get('/', (req, res) => {
     res.send('Hello World!');
 });
 app.get('/signup', (req, res) => {
+    res.send('Hello World!');
 });
 app.post('/signup', async (req, res) => {
     const { name, phone, email, password, location } = req.body;
