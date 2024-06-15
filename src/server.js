@@ -1,7 +1,11 @@
 const app = require('../api/index');
 const cors = require('cors');
+const corsOptions = {
+    origin: 'https://one-shop-burnerace.vercel.app',
+    credentials: true
+};
 
-app.use(cors());
+app.use(cors(corsOptions));
 
 const PORT = process.env.PORT || 5000;
 
