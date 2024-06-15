@@ -6,9 +6,10 @@ const cors = require('cors');
 const NodeGeocoder = require('node-geocoder');
 const corsOptions = {
     origin: 'https://one-shop-burnerace.vercel.app',
-    methods: 'GET,POST,PUT,DELETE,OPTIONS',
-    withCredentials: 'true'
-};
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true 
+  };
 
 const options = {
     provider: 'openstreetmap',
