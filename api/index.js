@@ -5,7 +5,7 @@ const { MongoClient, ObjectId, ServerApiVersion } = require('mongodb');
 const cors = require('cors');
 const NodeGeocoder = require('node-geocoder');
 const corsOptions = {
-    origin: 'https://one-shop-burnerace.vercel.app/',
+    origin: 'https://one-shop-burnerace.vercel.app',
     methods: 'GET,POST,PUT,DELETE,OPTIONS',
     credentials: 'true'
 };
