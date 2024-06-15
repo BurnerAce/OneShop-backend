@@ -61,6 +61,7 @@ app.get('/signup', (req, res) => {
     res.send('Hello World!');
 });
 app.post('/signup', async (req, res) => {
+    console.log("Done");
     res.header("Access-Control-Allow-Origin", "https://one-shop-burnerace.vercel.app");
     res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
     res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
