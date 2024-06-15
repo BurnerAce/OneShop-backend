@@ -205,6 +205,7 @@ app.post('/ologin', async (req, res) => {
 app.get('/stores', async (req, res) => {
     try {
         await client.connect();
+        console.log("Done");
         const db2 = client.db(dbName2);
         const collection = db2.collection('st');
         const stores = await collection.find({}).toArray();
